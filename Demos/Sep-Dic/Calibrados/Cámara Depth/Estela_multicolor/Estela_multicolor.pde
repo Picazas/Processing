@@ -16,6 +16,7 @@ void setup(){
   size (1280, 720);
   kinect= new SimpleOpenNI(this);
   background(0);
+  frameRate(10);
   reScale = (float) width / kinectWidth;
   
   if (kinect.isInit()==false){

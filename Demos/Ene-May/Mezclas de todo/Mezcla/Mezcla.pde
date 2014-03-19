@@ -67,6 +67,7 @@ void draw(){
           for(int j = 0; j <= height; j += 20) {
             float size = dist(jointPos.x, jointPos.y, i, j);
             size = size/max_distance * 66;
+            noStroke();
             fill(255);
             ellipse(i, j, size, size);
           }
@@ -128,7 +129,11 @@ void draw(){
          {
            int userId = userList [i];
            
-          kinect.getJointPositionSkeleton(userId,SimpleOpenNI.SKEL_NECK,jointPos);
+          kinect.getCoM(userId, position);
+          kinect.convertRealWorldToProjective(position, position);
+          
+          jointPos.x = position.x*reScale;
+          jointPos.y = position.y*reScale;
           kinect.getJointPositionSkeleton(userId,SimpleOpenNI.SKEL_LEFT_HAND,jointPosLH);
           kinect.getJointPositionSkeleton(userId,SimpleOpenNI.SKEL_RIGHT_HAND,jointPosRH);
           println("Neck:"+jointPos);
@@ -147,8 +152,8 @@ void draw(){
         move+=10;
       }
       if(jointPos.x!=0){
-        jointPos.x = (jointPos.x + 600)/2;
-        jointPos.y = (jointPos.y - 400)/(-1.75);
+        jointPos.x = (jointPos.x);
+        jointPos.y = (jointPos.y);
       }
       else{
         kinect.getCoM(userId, position);

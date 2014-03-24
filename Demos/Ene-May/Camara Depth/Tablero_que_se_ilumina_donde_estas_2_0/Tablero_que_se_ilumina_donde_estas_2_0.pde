@@ -86,7 +86,6 @@ void draw(){
     }
   }
 
-  println(count);
   for(int u=0; u<squareV*squareH; u++){act[u]=0;}
 }
 

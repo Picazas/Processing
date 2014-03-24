@@ -4,7 +4,7 @@ SimpleOpenNI kinect;
 
 int[] x = new int [4]; //{x0,x2,x3,x4}
 int[] y = new int [4];
-int[][] jointPos = new int[15][2];   //{person}{x,y}
+float[][] jointPos = new float[15][2];   //{person}{x,y}
 PVector p1 = new PVector(250,200,0);
 PVector p2 = new PVector(500,200,0);
 PVector p3 = new PVector(250,200,0);
@@ -39,17 +39,17 @@ void draw(){
       kinect.getCoM(userId, position);
       kinect.convertRealWorldToProjective(position, position);
             
-      jointPos.x = position.x*reScale;
-      jointPos.y = position.y*reScale; 
+      jointPos[z][0] = position.x*reScale;
+      jointPos[z][1] = position.y*reScale; 
      
       if(z==0){
-       p1.x = jointPos.x;
-       p1.y = jointPos.y;
+       p1.x = jointPos[z][0];
+       p1.y = jointPos[z][1];
       } 
       
       else if(z==1){
-        p2.x = jointPos.x;
-        p2.y = jointPos.y;            
+        p2.x = jointPos[z][0];
+        p2.y = jointPos[z][1];            
         for(int r=0; r<8; r++){
           change(r,int(p1.x),int(p1.y),int(p2.x),int(p2.y));
           drawLine(x[0],y[0],int(p1.x),int(p1.y),x[1],y[1],x[2],y[2],x[3],y[3],int(p2.x),int(p2.y));
@@ -57,13 +57,13 @@ void draw(){
       }
       
       else if(z==2){
-       p3.x = jointPos.x;
-       p3.y = jointPos.y;
+       p3.x = jointPos[z][0];
+       p3.y = jointPos[z][1];
       } 
       
       else if(z==3){
-        p4.x = jointPos.x;
-        p4.y = jointPos.y;            
+        p4.x = jointPos[z][0];
+        p4.y = jointPos[z][1];            
         for(int r=0; r<8; r++){
           change(r,int(p3.x),int(p3.y),int(p4.x),int(p4.y));
           drawLine(x[0],y[0],int(p3.x),int(p3.y),x[1],y[1],x[2],y[2],x[3],y[3],int(p4.x),int(p4.y));

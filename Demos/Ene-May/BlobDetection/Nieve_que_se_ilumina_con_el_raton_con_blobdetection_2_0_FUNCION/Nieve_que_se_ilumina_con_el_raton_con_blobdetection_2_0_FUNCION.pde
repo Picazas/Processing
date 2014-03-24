@@ -15,15 +15,17 @@ int clickedDepth,clickPosition;
 int kinectWidth = 640;
 int kinectHeight = 480;
 int num;
+int maxValue = 2500;
 float reScale;
 float maxCount = 8;
+float lado = 10;
 int[] count;
 int[] act;
 int[] actL;
 PImage cam, blobs;
 
 void setup(){
-  size(700,500,OPENGL);
+  size(1000,750,OPENGL);
   background(0);
   reScale = (float) width / kinectWidth;
   cam = createImage(640,480,RGB);
@@ -69,7 +71,7 @@ void draw(){
        for(int w = 0; w < 640; w++){
          clickPosition = w + (h*640);        //We see which pixel we are working on
          clickedDepth = depthValues[clickPosition];    //See the pixel's value 
-         if (userMap[clickPosition] != 0) {
+         if (clickedDepth > 455 && maxValue > clickedDepth) {
              cam.pixels[clickPosition] = color(255);
            }
            else cam.pixels[clickPosition] = color(0);
@@ -95,9 +97,7 @@ void draw(){
     }
     
     if(act[x] == 1){
-      fill(255);
-      ellipseMode(CENTER);
-      ellipse(copos[x][0],copos[x][1],5,5);
+      drawSnow(copos[x][0],copos[x][1]);
       copos[x][1]++;
     }
     
@@ -124,6 +124,41 @@ void draw(){
     }
     
   }
+}
+
+void drawSnow(float x,float y){
+  
+   noFill();
+   stroke(255);
+   line(x,y-lado/2,x,y+lado/2); 
+   line(x,y-lado/3,x+lado/6,y-lado/2); 
+   line(x,y-lado/3,x-lado/6,y-lado/2);  
+   line(x,y+lado/3,x+lado/6,y+lado/2); 
+   line(x,y+lado/3,x-lado/6,y+lado/2);
+   line(x-lado/2,y,x+lado/2,y);
+   line(x-lado/3,y,x-lado/2,y+lado/6); 
+   line(x-lado/3,y,x-lado/2,y-lado/6);  
+   line(x+lado/3,y,x+lado/2,y-lado/6); 
+   line(x+lado/3,y,x+lado/2,y+lado/6);
+   pushMatrix();
+   noFill();
+   stroke(255);
+   translate(x,y,0);
+   rotateZ(radians(45));
+   line(0,-lado/2,0,lado/2);
+   line(0,-lado/3,lado/6,-lado/2); 
+   line(0,-lado/3,-lado/6,-lado/2);  
+   line(0,lado/3,lado/6,lado/2); 
+   line(0,lado/3,-lado/6,lado/2);
+   rotateZ(radians(90));
+   line(0,-lado/2,0,lado/2);
+   line(0,-lado/2,0,lado/2);
+   line(0,-lado/3,lado/6,-lado/2); 
+   line(0,-lado/3,-lado/6,-lado/2);  
+   line(0,lado/3,lado/6,lado/2); 
+   line(0,lado/3,-lado/6,lado/2);
+   popMatrix();
+   
 }
 
 public void drawBlobsAndEdges(boolean drawBlobs, boolean drawEdges)
@@ -163,4 +198,18 @@ public void drawBlobsAndEdges(boolean drawBlobs, boolean drawEdges)
       }
     }
   }
+}
+
+void keyPressed(){
+  
+  println("MaxValue: " + maxValue);
+  switch(key)
+  {
+  case 'q':
+    maxValue+=100;
+    break;
+  case 'a':
+    maxValue-=100;
+    break;
+  }  
 }

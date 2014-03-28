@@ -2,7 +2,7 @@
 import SimpleOpenNI.*;
 SimpleOpenNI kinect;
 
-int total =80;
+int total =90;
 int lineW;
 int c=0;
 int c2=0;

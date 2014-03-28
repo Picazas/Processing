@@ -43,27 +43,27 @@ void draw(){
     for(int z = 0; z < userList.length; z++) { 
         for (int i = 0; i < userMap.length; i++) { 
           if (userMap[i] != 0) {
-            switch(userList[z]){
+            switch(z){
               case 0:
-                cam.pixels[i] = color(0, 255, 0); //The color you want for all pleople
+                cam.pixels[i] = color(0, 255, 0);
                 break;
               case 1:
-                cam.pixels[i] = color(255, 0, 0); //The color you want for all pleople
+                cam.pixels[i] = color(255, 0, 0);
                 break;
               case 2:
-                cam.pixels[i] = color(0, 0, 255); //The color you want for all pleople
+                cam.pixels[i] = color(0, 0, 255);
                 break;
               case 3:
-                cam.pixels[i] = color(255, 255, 255); //The color you want for all pleople
+                cam.pixels[i] = color(255, 255, 255);
                 break;
               case 4:
-                cam.pixels[i] = color(255, 255, 0); //The color you want for all pleople
+                cam.pixels[i] = color(255, 255, 0);
                 break;
               case 5:
-                cam.pixels[i] = color(0, 255, 255); //The color you want for all pleople
+                cam.pixels[i] = color(0, 255, 255);
                 break;
               default:
-                cam.pixels[i] = color(255, 0, 255); //The color you want for all pleople
+                cam.pixels[i] = color(255, 0, 255);
                 break;            
             }
           }

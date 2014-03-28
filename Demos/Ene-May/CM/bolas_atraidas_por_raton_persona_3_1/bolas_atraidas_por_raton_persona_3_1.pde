@@ -79,6 +79,13 @@ void draw() {
   int[] depthValues = kinect.depthMap();
   int total = 0;
   
+  for(int s=0; s<6; s++){
+     min[s][0] = width;
+     min[s][1] = height;
+     max[s][0] = 0;
+     max[s][1] = 0;
+  }
+  
   for (int z=0; z<userList.length; z++){
     
     int userId = userList[z]; //getting user data

@@ -1,5 +1,6 @@
-import SimpleOpenNI.*;
+//Cada persona aparece de un color distinto al resto.
 
+import SimpleOpenNI.*;
 SimpleOpenNI kinect;
 
 int t=0;

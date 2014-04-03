@@ -1,3 +1,5 @@
+//Se crean luces que salen de los laterales y de arriba y se van difuminando hasta llegar
+//al usuario. Coge la sección eficaz del usuario. Encima del usuario no hay "luz" alguna.
 
 import SimpleOpenNI.*;
 SimpleOpenNI kinect;

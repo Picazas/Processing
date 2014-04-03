@@ -1,3 +1,5 @@
+//Se crea un fondo base que se va distorsionando a medida que entran usuarios al escenario.
+//Si se salen el fondo no vuelve a su forma original.
 
 import SimpleOpenNI.*;
 SimpleOpenNI kinect;
@@ -27,8 +29,11 @@ void draw() {
   println(people);
   
   loadPixels();
-  if(n < people){
+  if(n <= people){
     n += 0.1;
+  }
+  else if(n => people){
+    n -= 0.1;
   }
   float m = n * 1.67;
   //float n = people * 1.67;
@@ -53,4 +58,5 @@ void draw() {
     x += dx;                  // Increment x
   }
   updatePixels();
+  people = 0;
 }

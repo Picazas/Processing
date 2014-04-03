@@ -1,3 +1,5 @@
+//Si el espacio que abarca el usuario es superior a 200 pixeles se generan partículas en
+//los dos extremos del espacio que abarca.
 
 import SimpleOpenNI.*;
 SimpleOpenNI kinect;

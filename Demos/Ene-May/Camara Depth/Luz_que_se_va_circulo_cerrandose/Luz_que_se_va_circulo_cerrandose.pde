@@ -1,3 +1,6 @@
+//Crea una máscara de los usuarios y objetos pintada de negro sobre un fondo blanco. En el
+//momento que esta máscara está por debajo de X pixeles el fondo blanco empieza a decrecer 
+//con forma de círculo dejándolo todo negro.
 
 import SimpleOpenNI.*;
 SimpleOpenNI kinect;

@@ -1,3 +1,6 @@
+//Crea una máscara del usuario y de los objetos con puntos verdes sobre un fondo dinámico
+//de rayas horizintales que van subiendo continuamente.
+
 import SimpleOpenNI.*;
 SimpleOpenNI kinect;
 

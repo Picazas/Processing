@@ -1,3 +1,5 @@
+//Divide la imagen en una red de 50x30 cuadrados que se iluminan si se encuentra algún usuario
+//o algún objeto en ellos. Como un tablero de ajedrez que se ilumina.
 
 import SimpleOpenNI.*;
 SimpleOpenNI kinect;

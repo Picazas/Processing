@@ -1,3 +1,6 @@
+//Crea una máscara para iluminar a los usuarios y objetos mientras que caen rayos que generan
+//fogonazos al llegar al suelo.
+
 import SimpleOpenNI.*;
 SimpleOpenNI kinect;
 
@@ -55,7 +58,7 @@ void draw(){
       clickedDepth = depthValues[clickPosition];    //See the pixel's value 
       if (clickedDepth > 455){
       if (maxValue > clickedDepth){
-        cam.pixels[ clickPosition] = color(120,0,0);}}
+        cam.pixels[ clickPosition] = color(255);}}
     }
   }
   cam.updatePixels();

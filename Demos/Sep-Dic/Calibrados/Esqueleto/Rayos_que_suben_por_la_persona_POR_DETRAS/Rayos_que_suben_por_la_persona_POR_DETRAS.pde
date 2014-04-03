@@ -1,3 +1,6 @@
+//Salen rayos blancos sobre un fondo negro de la espalda del usuario esté donde esté. Además
+//si levanta ambas manos los rayos empezarán a ascender.
+
 import SimpleOpenNI.*;
 SimpleOpenNI kinect;
 

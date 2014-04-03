@@ -1,3 +1,4 @@
+//Genera la silueta de los usuarios por medio de la información de la cámara User.
 
 import SimpleOpenNI.*;
 SimpleOpenNI kinect;

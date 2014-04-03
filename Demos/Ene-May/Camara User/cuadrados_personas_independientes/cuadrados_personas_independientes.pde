@@ -1,3 +1,4 @@
+//Crea un cuadrado independiente para cada usuario que cerca el espacio donde se encuentra.
 
 import SimpleOpenNI.*;
 SimpleOpenNI kinect;

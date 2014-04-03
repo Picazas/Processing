@@ -1,3 +1,5 @@
+//Se dibuja la silueta y círculos por el escenario y por donde pasa la silueta los círculos
+//empiezan a abrirse y cerrarse.
 
 import blobDetection.*;
 BlobDetection theBlobDetection;

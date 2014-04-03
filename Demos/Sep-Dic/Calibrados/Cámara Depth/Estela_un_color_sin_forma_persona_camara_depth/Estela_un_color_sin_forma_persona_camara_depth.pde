@@ -1,5 +1,7 @@
-import SimpleOpenNI.*;
+//Con el movimiento se va dejando una estela de un color por donde se pasa, vale con objetos
+//también, no solo con las personas. La persona sale de negro pudiendose cambiar este color.
 
+import SimpleOpenNI.*;
 SimpleOpenNI kinect;
 
 int kinectWidth = 640;

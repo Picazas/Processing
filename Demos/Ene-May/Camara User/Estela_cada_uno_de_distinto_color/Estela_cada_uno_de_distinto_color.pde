@@ -1,3 +1,5 @@
+//Con el movimiento se va dejando una estela de un color por donde se pasa, cada usuario
+//generará una estela de un color diferente al resto.
 
 import SimpleOpenNI.*;
 SimpleOpenNI kinect;

@@ -1,3 +1,4 @@
+//Al haber movimiento se genera un fogonazo con líneas que desaparece con el tiempo.
 
 import SimpleOpenNI.*;
 SimpleOpenNI kinect;

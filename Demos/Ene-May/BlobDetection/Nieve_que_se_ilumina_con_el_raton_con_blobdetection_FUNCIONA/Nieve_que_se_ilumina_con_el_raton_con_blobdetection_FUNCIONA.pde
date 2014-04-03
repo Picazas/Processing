@@ -1,3 +1,5 @@
+//Se diguja la silueta en blanco sobre un fondo negro y van cayendo copos de nieve, los 
+//cuales al tocar dicha silueta se "desaparecen" y generan una luz.
 
 import blobDetection.*;
 BlobDetection theBlobDetection;

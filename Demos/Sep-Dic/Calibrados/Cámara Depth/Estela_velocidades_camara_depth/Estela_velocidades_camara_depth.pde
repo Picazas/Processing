@@ -1,5 +1,8 @@
-import SimpleOpenNI.*;
+//Con el movimiento se va dejando una estela de un color por donde se pasa, vale con objetos
+//también, no solo con las personas. La transparencia va aumentando a medida que avanza el 
+//tiempo. El color de la persona se puede variar.
 
+import SimpleOpenNI.*;
 SimpleOpenNI kinect;
 
 int kinectWidth = 640;

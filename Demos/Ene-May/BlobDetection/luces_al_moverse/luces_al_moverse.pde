@@ -1,3 +1,4 @@
+//Al moverse el usuario se van generando pequeñas luces que caen de su silueta.
 
 import processing.opengl.*;
 import SimpleOpenNI.*;

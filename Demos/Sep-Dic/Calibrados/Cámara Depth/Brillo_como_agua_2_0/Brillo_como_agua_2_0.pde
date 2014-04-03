@@ -1,3 +1,6 @@
+//Genera unos brillos de verde sobre negro e ilumina a personas y objetos 
+//de blanco dejando estelas.
+
 import SimpleOpenNI.*;
 SimpleOpenNI kinect;
 

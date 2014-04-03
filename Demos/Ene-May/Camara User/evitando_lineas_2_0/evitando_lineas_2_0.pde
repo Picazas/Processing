@@ -1,3 +1,5 @@
+//Se general líneas verticales en movimiento desde el techo hasta el suelo y se abren a modo
+//de cortina en el espacio donde se encuentran los usuarios de forma independiente unos de otros.
 
 import SimpleOpenNI.*;
 SimpleOpenNI kinect;

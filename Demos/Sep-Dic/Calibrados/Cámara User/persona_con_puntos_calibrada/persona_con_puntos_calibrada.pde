@@ -1,3 +1,5 @@
+//Aparecen las personas punteadas de verde sobre un fondo negro.
+
 import SimpleOpenNI.*;
 SimpleOpenNI kinect;
 

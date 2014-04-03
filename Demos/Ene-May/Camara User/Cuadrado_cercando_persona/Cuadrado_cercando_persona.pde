@@ -1,3 +1,4 @@
+//Crea un cuadrado que cerca el espacio donde se encuentran los usuarios en conjunto.
 
 import SimpleOpenNI.*;
 SimpleOpenNI kinect;

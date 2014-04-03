@@ -1,3 +1,5 @@
+//Dibuja la silueta del usuario y los objetos de alrededorcon líneas horizontales y el fondo
+//con líneas verticales creando así el contraste. El grosor se puede variar.
 
 import SimpleOpenNI.*;
 SimpleOpenNI kinect;

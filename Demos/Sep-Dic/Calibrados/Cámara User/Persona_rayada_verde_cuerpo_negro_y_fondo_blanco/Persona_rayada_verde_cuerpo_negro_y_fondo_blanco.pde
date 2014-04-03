@@ -1,3 +1,6 @@
+//Crea una máscara del uruario formada por líneas verdes oblicuas y punteadas en movimiento
+//sobre un fondo blanco y creando un fondo negro en la figura de la persona.
+
 import SimpleOpenNI.*;
 SimpleOpenNI kinect;
 

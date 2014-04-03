@@ -1,3 +1,5 @@
+//Con el movimiento se va dejando una estela de diferentes colores por donde se pasa, vale
+//con objetos también, no solo con las personas.
 
 import SimpleOpenNI.*;
 SimpleOpenNI kinect;

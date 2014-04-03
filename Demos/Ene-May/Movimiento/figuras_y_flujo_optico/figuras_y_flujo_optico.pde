@@ -1,3 +1,5 @@
+//Las figuras creadas se mueven conforme haya más o menos moviemiento en el escenario.
+
 import SimpleOpenNI.*;
 SimpleOpenNI kinect;
 

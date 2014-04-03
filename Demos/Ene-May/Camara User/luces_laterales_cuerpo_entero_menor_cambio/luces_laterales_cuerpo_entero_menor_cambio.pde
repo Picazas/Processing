@@ -1,3 +1,6 @@
+//Se crean luces que salen de los laterales y de arriba y se van difuminando hasta llegar
+//al usuario. Coge la sección eficaz del usuariopor lo que si abre mucho los brazos no tiene luz
+//en su zona, sino tiene difuminado encima. El salto de difuminación es menor en este escenario.
 
 import SimpleOpenNI.*;
 SimpleOpenNI kinect;

@@ -1,3 +1,5 @@
+//Genera la silueta de los usuarios por medio de la información de la cámara Depth, por lo
+//que también genera la silueta de los objetos que se encuentren en el escenario.
 
 import SimpleOpenNI.*;
 SimpleOpenNI kinect;

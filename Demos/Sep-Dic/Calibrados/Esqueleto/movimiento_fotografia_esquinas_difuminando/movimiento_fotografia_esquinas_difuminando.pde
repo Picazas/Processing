@@ -1,3 +1,7 @@
+//Con la kinect se cogen las coordenadas de las manos, cuando se suben ambas sacará una foto 
+//y dependiendo de donde se encuentre la mano izquierda irá hacia alguna de las esquinas.
+//Además la imagen se irá difuminando a medida que avanza la imagen.
+
 import SimpleOpenNI.*;
 SimpleOpenNI  kinect;
 

@@ -1,3 +1,5 @@
+//Salen rayos blancos sobre un fondo negro de la espalda del usuario esté donde esté.
+
 import SimpleOpenNI.*;
 SimpleOpenNI kinect;
 

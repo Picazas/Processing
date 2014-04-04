@@ -1,5 +1,7 @@
-int MAX=200;
-// declare array of positions
+//Se generan celulas verdes con la corteza azul que se ven atraidas por el ratón y en el 
+//momento que llegan a el desaparecen continuamente.
+
+int MAX=200;  // declare array of positions
 float[] myxlocs = new float[MAX];  //X position
 float[] myylocs = new float[MAX];  //Y position
 

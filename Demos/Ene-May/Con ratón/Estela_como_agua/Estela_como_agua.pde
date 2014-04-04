@@ -1,3 +1,5 @@
+//Líneas negras que salen de la posición del ratón hacia las "paredes" sobre un fondo verde.
+
 PVector jointPos = new PVector(0,0,0);
 color c = color(255, 0, 0);
 

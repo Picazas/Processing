@@ -1,3 +1,7 @@
+//Al estarse el ratón quieto los cuerpos son atraidos por él, mientras que si está en 
+//movimiento las particulas salen despedidas hacia las paredes. Las partículas son puntos
+//negros. En comparación con la 2.0, en esta la fuerza es proporcional al moviemiento del 
+//ratón.
 
 import pbox2d.*;
 import org.jbox2d.collision.shapes.*;

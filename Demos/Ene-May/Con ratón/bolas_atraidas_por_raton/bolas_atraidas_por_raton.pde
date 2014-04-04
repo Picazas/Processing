@@ -1,3 +1,5 @@
+//Al estarse el ratón quieto los cuerpos son atraidos por él, mientras que si está en 
+//movimiento las particulas sufren una fuerza hacia arriba, hacia el "techo".
 
 import pbox2d.*;
 import org.jbox2d.collision.shapes.*;

@@ -1,3 +1,5 @@
+//Caen círculos blancos que representan nieve y cuando tocan el ratón desaparecen dejando
+//una luz donde estaban.
 
 int[] nieveSueloX = new int[6]; 
 int[] nieveSueloY = new int[6];

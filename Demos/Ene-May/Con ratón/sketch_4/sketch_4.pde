@@ -1,3 +1,6 @@
+//Genera unas elipses que cambian de tamaño y de rotación dependiendo de los parámetros
+//del ratón.
+
 void setup(){
 noFill();
 size(500,500);

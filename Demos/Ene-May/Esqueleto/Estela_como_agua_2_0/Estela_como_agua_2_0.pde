@@ -1,3 +1,5 @@
+//Crea unas "luces" con líneas verdes sobre negro que van siguiendo desde arriba al usuario
+//dependiendo de la posición de su cuello. Se puede mejorar usando el CM.
 
 import SimpleOpenNI.*;
 SimpleOpenNI kinect;

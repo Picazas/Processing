@@ -1,3 +1,4 @@
+//Al pulsar el ratón une este con un punto fijo por medio de telas de araña en movimiento.
 
 int[] x = new int [4]; //{x0,x2,x3,x4}
 int[] y = new int [4];

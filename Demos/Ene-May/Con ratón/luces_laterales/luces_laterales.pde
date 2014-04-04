@@ -1,3 +1,5 @@
+//Se genera una mancha negra donde se haya el ratón que va difuminando hacia los laterales,
+//de donde sale la luz.
 
 import SimpleOpenNI.*;
 SimpleOpenNI kinect;

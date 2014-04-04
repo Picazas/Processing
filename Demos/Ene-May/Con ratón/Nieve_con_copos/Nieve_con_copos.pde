@@ -1,3 +1,5 @@
+//Se crean copos blancos de nieve y estos se ven influenciados por el movimiento
+//, tanto en módulo como en dirección, del ratón.
 
 double visc, diff, vScale, velocityScale;
 boolean vectors = false;

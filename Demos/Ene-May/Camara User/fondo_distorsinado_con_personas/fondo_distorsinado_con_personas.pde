@@ -32,7 +32,7 @@ void draw() {
   if(n <= people){
     n += 0.1;
   }
-  else if(n => people){
+  else if(n >= people){
     n -= 0.1;
   }
   float m = n * 1.67;

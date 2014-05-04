@@ -70,6 +70,7 @@ void setup(){
 //  num = int(num*reScale);
   
   println("flujo optico: " + num);
+  println("act: " + act);
  /* translate(0, (height-kinectHeight*reScale)/2);
   scale(reScale);
   image(cam,0,0);*/
@@ -78,7 +79,7 @@ void setup(){
     act=1;
   }
   
-  if(act==1 && count==0){
+  if(act==1 && count<4){
     fill(255);
     noStroke();
     rect(0,0,width,height);

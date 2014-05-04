@@ -29,13 +29,13 @@ void draw(){
       clickedDepth = depthValues[position];
       milimetros = clickedDepth;
       if (milimetros < 1000){
-        cam.pixels[ position] = color(255,0,0);
+        cam.pixels[ position] = color(255*(milimetros/5000),0,0);
       }
       else if (milimetros < 2000){
-        cam.pixels[ position] = color(0,255,0);
+        cam.pixels[ position] = color(255,255*(milimetros/5000),0);
       }
       else if (milimetros > 2000) {
-        cam.pixels[ position] = color(0,0,255);
+        cam.pixels[ position] = color(255,255,255*(milimetros/5000));
      }
      else cam.pixels[ position] = color(255,255,255);
    }

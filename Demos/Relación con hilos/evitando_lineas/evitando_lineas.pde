@@ -4,8 +4,8 @@ SimpleOpenNI kinect;
 
 
 int[][] lines;                  
-PVector min = new PVector{0,0,0};    
-PVector max = new PVector{0,0,0};
+PVector min = new PVector(0,0,0);    
+PVector max = new PVector(0,0,0);
 int c;
 int nLines = 150;
 PVector position = new PVector();
@@ -41,10 +41,10 @@ void draw(){
   PImage cam = createImage(640,480,RGB);
   
   for(int s=0; s<6; s++){
-     min[s][0] = width;
-     min[s][1] = height;
-     max[s][0] = 0;
-     max[s][1] = 0;
+     min.x = width;
+     min.y = height;
+     max.x = 0;
+     max.y = 0;
   }
       
    if (kinect.getNumberOfUsers() > 0) {

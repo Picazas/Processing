@@ -52,7 +52,7 @@ void draw(){
   
   cam.updatePixels();  
   theBlobDetection.computeBlobs(cam.pixels);
-  drawBlobsAndEdges(false, true);
+  drawBlobsAndEdges(true, true);
   /*translate(0, (height-kinectHeight*reScale)/2);
   scale(reScale);
   image(cam,0,0);*/

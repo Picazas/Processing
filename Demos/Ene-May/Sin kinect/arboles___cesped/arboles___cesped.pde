@@ -5,10 +5,10 @@ int xc = 0;
 float[][] coordI = new float [400][2];  //Coordenadas iniciales {cesped}{x,y}
 float[][] coordF = new float [400][2];  //Coordenadas finales {cesped}{x,y}
 float[][] coordP = new float [400][2];  //Coordenadas del punto {cesped}{x,y}
-float[] aleatorio = new float [400];
+float[] aleatorio = new float [400];    //Indica la inclinación del cesped.
 int[][] x = new int[6][65];
 int[][] y = new int[6][65];
-int[][] cuentax = new int[6][65];
+int[][] cuentax = new int[6][4];
 int[] momento = new int[6];
 int[] sx1 = new int[6];
 int[] sy1 = new int[6];
@@ -30,13 +30,12 @@ void setup(){
     momento[z] = 0;
     for(int w=0; w<65; w++){
       x[z][w]=0;
-      y[z][w]=0;
+      y[z][w]=0;      
+      x[z][0] = width/2;
+      x[z][0] = int(random(100,width-100));
+    }
+    for(int w=0; w<4; w++){
       cuentax[z][w]=0;
-    x[z][0] = width/2;
-    x[z][0] = int(random(100,width-100));
-    x[z][0] = int(random(100,width-100));
-    x[z][0] = int(random(100,width-100));
-    x[z][0] = int(random(100,width-100));
     }
    }
    
@@ -431,8 +430,7 @@ void draw(){
         y[c][63] = y[c][31] + sy2[c];
         
         fill(255);
-        stroke(255);
-        
+        stroke(255);        
         line(x[c][16],y[c][16],x[c][32],y[c][32]);
         line(x[c][16],y[c][16],x[c][33],y[c][33]);
         line(x[c][17],y[c][17],x[c][34],y[c][34]);
@@ -479,7 +477,7 @@ void draw(){
       break;
       
     }
-    for(int u=0; u<20; u++){
+    for(int u=0; u<4; u++){
       cuentax[c][u]++;
     }
   }

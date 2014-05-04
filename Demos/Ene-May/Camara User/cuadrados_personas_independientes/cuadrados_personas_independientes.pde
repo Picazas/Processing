@@ -16,7 +16,7 @@ int clickedDepth,clickPosition;
 
 
 void setup(){
-  size(700,500);
+  size(1000,750);
   background(0);
   reScale = (float) width / kinectWidth;
    
@@ -37,12 +37,7 @@ void draw(){
   scale(reScale);
   
   background(0);
-  for(int s=0; s<6; s++){
-     min[s][0] = width;
-     min[s][1] = height;
-     max[s][0] = 0;
-     max[s][1] = 0;
-  }
+  
   
   if (kinect.getNumberOfUsers() > 0) {
    cam.loadPixels();
@@ -73,10 +68,17 @@ void draw(){
     line(min[z][0],min[z][1],max[z][0],min[z][1]);
     line(max[z][0],min[z][1],max[z][0],max[z][1]);
     
+    for(int s=0; s<6; s++){
+     min[s][0] = width;
+     min[s][1] = height;
+     max[s][0] = 0;
+     max[s][1] = 0;
+  }
     }
     cam.updatePixels();
     translate(0, (height-kinectHeight*reScale)/2);    
     image(cam,0,0);
+    
     
   }    
 }

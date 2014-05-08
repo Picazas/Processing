@@ -11,7 +11,7 @@ int c;
 int nLines = 150;
 int kinectWidth = 640;
 int kinectHeight = 480;
-int tipe = 0;
+int type = 0;
 float reScale;
 
 void setup(){
@@ -33,13 +33,13 @@ void setup(){
 } 
 
 void draw(){
-  println(tipe);
+  println(type);
   kinect.update();
   int[] userList = kinect.getUsers();
   int[] userMap = kinect.userMap();
   PImage cam = createImage(640,480,RGB);
   
-  switch(tipe){
+  switch(type){
     case 0:
     
       fill(0,0,0,35);
@@ -234,13 +234,13 @@ void draw(){
   }
   if (keyPressed) {
     if (key == 'a') {
-      tipe++;
+      type++;
     }
     if (key == 's') {
-      tipe--;
+      type--;
     }
-    if(tipe==3){
-      tipe=0;
+    if(type==3){
+      type=0;
     }
   }
 }

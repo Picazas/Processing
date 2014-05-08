@@ -9,7 +9,7 @@ int kinectHeight = 480;
 // to center and rescale from 640x480 to higher custom resolutions
 float reScale;
 int clickedDepth,clickPosition;
-int maxValue;
+int maxValue = 2500;
 int a=0;
 int[] depthValues2;
 int[] depthValues;
@@ -30,7 +30,6 @@ void setup(){
   kinect.setMirror(true);
   kinect.enableDepth();
   
-  maxValue = 2500;
   depthValues2 = kinect.depthMap();
   depthValues = kinect.depthMap();
   

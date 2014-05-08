@@ -44,8 +44,8 @@ void draw(){
   }
   
   for(int c=0; c<20; c++){
-    woolBall(150,100);
-    woolBall(750,100);
+    woollenBall(width/7,100);
+    woollenBall(6*width/7,100);
   }
   if(userList.size()>0){
   for (int i=0; i<userList.size(); i++){
@@ -56,13 +56,13 @@ void draw(){
     jointPos.x = position.x*reScale;
     jointPos.y = position.y*reScale;
     
-    drawLine(150,100,int(jointPos.x),int(jointPos.y));
-    drawLine(750,100,int(jointPos.x),int(jointPos.y));
+    drawLine(width/7,100,int(jointPos.x),int(jointPos.y));
+    drawLine(6*width/7,100,int(jointPos.x),int(jointPos.y));
   }
 }
 }
 
-void woolBall(int inix, int iniy){
+void woollenBall(int inix, int iniy){
   int x = int( inix + random(-30,30));
   int y = int( iniy + random(-30,30));
   stroke(255);

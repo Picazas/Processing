@@ -100,7 +100,7 @@ void draw(){
     
     if(act[x] == 1){
       drawSnow(copos[x][0],copos[x][1]);
-      copos[x][1]++;
+      copos[x][1]+=3;
     }
     
     if(actL[x] == 1){
@@ -112,14 +112,10 @@ void draw(){
       count[x]++;
     }
     
-    if(copos[x][1] > height + 10){
+    if(copos[x][1] > (height + 10)){
       act[x] = 0;
       actL[x] = 1;
     }
-    /*else if(mouseX-3 < copos[x][0] && copos[x][0] < mouseX+3 && copos[x][1] > mouseY-3 && copos[x][1] < mouseY+3){
-      act[x] = 0;
-      actL[x] = 1;
-    }*/
 
     if(count[x] > maxCount){
       actL[x] = 0;
@@ -186,11 +182,11 @@ public void drawBlobsAndEdges(boolean drawBlobs, boolean drawEdges)
             line(eA.x*width, eA.y*height, eB.x*width, eB.y*height);
             
             for(int x=0; x<num; x++){ 
-              if(eA.x*width-3 < copos[x][0] && copos[x][0] < eA.x*width+3 && copos[x][1] > eA.y*height-3 && copos[x][1] < eA.y*height+3){
+              if(eA.x*width-3 < copos[x][0] && copos[x][0] < eA.x*width+3 && copos[x][1] > eA.y*height-3 && copos[x][1] < eA.y*height+3 && count[x] < maxCount){
                 act[x] = 0;
                 actL[x] = 1;
               }
-              else if(eB.x*width-3 < copos[x][0] && copos[x][0] < eB.x*width+3 && copos[x][1] > eB.y*height-3 && copos[x][1] < eB.y*height+3){
+              else if(eB.x*width-3 < copos[x][0] && copos[x][0] < eB.x*width+3 && copos[x][1] > eB.y*height-3 && copos[x][1] < eB.y*height+3 && count[x] < maxCount){
                 act[x] = 0;
                 actL[x] = 1;
               }

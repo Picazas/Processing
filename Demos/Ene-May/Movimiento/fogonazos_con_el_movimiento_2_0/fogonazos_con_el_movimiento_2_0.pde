@@ -75,7 +75,7 @@ void setup(){
   scale(reScale);
   image(cam,0,0);*/
   
-  if(num > 20000 && act==0){
+  if(num > 6000 && act==0){
     act=1;
   }
   

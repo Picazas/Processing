@@ -13,7 +13,7 @@ PVector position = new PVector();
 PVector jointPos = new PVector(0,0,0);
 int kinectWidth = 640;
 int kinectHeight = 480;
-int tipe = 0;
+int type = 0;
 float reScale;
 
 void setup(){
@@ -125,10 +125,6 @@ void drawLine(int l0, int l1,int minx, int miny, int maxx,int w){
      if(l1>(minx+(maxx-minx)/2)){
        stroke(255);
        line(l0,0,l1,miny-50);
-       /*line(lines[w][1], (min.y-50), (max.x+5+s), (min.y+100));
-       line((max.x+5+s),  (min.y+100), (max.x+30+s), (min.y+200));
-       line((max.x+30+s), (min.y+200), (max.x+30+s), (height-150));
-       line((max.x+30+s), (height-150), (max.x+s), (height+40));*/
        noFill();
        beginShape();
        curveVertex(l1,(miny)); 
@@ -144,10 +140,6 @@ void drawLine(int l0, int l1,int minx, int miny, int maxx,int w){
      else if(l1<(minx+(maxx-minx)/2)){
        stroke(255);
        line(l0,0,l1,miny-50);
-      /* line(lines[w][1],(min.y-50),(min.x-5-s),(min.y+100));
-       line((min.x-5-s),(min.y+100),(min.x-30-s),(min.y+200));
-       line((min.x-30-s),(min.y+200),(min.x-30-s),(height-150));
-       line((min.x-30-s),(height-150),(min.x-s),(height+40));*/
        noFill();
        beginShape();
        curveVertex(l1,(miny));

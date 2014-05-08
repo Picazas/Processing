@@ -5,7 +5,7 @@ float lado=40;
 float alto=200;
 
 void setup()  {
-  size(720, 720, P3D);
+  size(650, 650, P3D);
   noStroke();
   fill(204);
 }
@@ -25,19 +25,18 @@ void draw()  {
     if(key=='a'){ax++;}
     if(key=='s'){ay++;}
   }
-
 }
 
 void leftSide(){
   pushMatrix();
-  translate(width/2,height/2,-200);
+  translate(width/2,height*4/5,-200);
   for(int q=6; q>0; q--){
     for(int r=0; r<q+1; r++){
       pushMatrix();
       rotateX(radians(ax)); 
       rotateY(radians(-ay)); 
       fill(0,100+r*25,0);
-      translate(lado*(r-q+6), 0, -lado*6/10-lado*q);
+      translate(lado*(r-q+6), -alto*r/12, -lado*6/10-lado*q);
       box(lado,alto*r/6,lado);         
       popMatrix();
     }
@@ -48,14 +47,14 @@ void leftSide(){
 
 void rightSide(){
   pushMatrix();
-  translate(width/2,height/2,-200);
+  translate(width/2,height*4/5,-200);
   for(int q=6; q>0; q--){
     for(int r=0; r<q+1; r++){
       pushMatrix();
       rotateX(radians(ax)); 
       rotateY(radians(ay)); 
       fill(0,100+r*25,0);      
-      translate(-lado*(r-q+6),0, -lado*6/100-lado*q);
+      translate(-lado*(r-q+6),-alto*r/12, -lado*6/100-lado*q);
       box(lado,alto*r/6,lado);         
       popMatrix();
     }

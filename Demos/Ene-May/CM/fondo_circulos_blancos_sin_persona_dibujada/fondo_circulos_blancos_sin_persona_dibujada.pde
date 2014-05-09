@@ -62,6 +62,8 @@ void draw()
       for(int j = 0; j <= height; j += 20) {
         float size = dist(jointPos.x, jointPos.y, i, j);
         size = size/max_distance * 66;
+        fill(255);
+        noStroke();
         ellipse(i, j, size, size);
       }
     }

@@ -1,4 +1,6 @@
 
+//Explosion's boundary
+
 class Boundary {
 
   // A boundary is a simple rectangle with x,y,width,and height

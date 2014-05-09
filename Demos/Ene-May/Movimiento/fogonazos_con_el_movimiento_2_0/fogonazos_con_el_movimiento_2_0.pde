@@ -67,13 +67,9 @@ void setup(){
       num++;
     }
   }
-//  num = int(num*reScale);
   
   println("flujo optico: " + num);
   println("act: " + act);
- /* translate(0, (height-kinectHeight*reScale)/2);
-  scale(reScale);
-  image(cam,0,0);*/
   
   if(num > 6000 && act==0){
     act=1;

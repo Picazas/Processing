@@ -17,7 +17,7 @@ int kinectHeight = 480;
 float reScale;
 
 void setup(){
-  size(700,500,OPENGL);
+  size(1366,763,OPENGL);
   background(0);
   int lado = width/14;
   square = createImage(lado,lado,ARGB);
@@ -43,9 +43,8 @@ void draw(){
   
   kinect.update();
   int[] userMap = kinect.userMap(); 
-  int[] userList = kinect.getUsers();
-  int[] depthValues = kinect.depthMap();
-  
+  int[] userList = kinect.getUsers();  
+  PImage cam = createImage(640,480,RGB);
   
   fill(0);
   rect(0,0,width,height);
@@ -56,12 +55,14 @@ void draw(){
      max[s][1] = 0;
   }
   
+  cam.loadPixels();  
   if (kinect.getNumberOfUsers() > 0) {   
     for (int z=0; z<userList.length; z++){  
       for(int h = 0; h < 480; h++){           //See all the pixels
        for(int w = 0; w < 640; w++){
          clickPosition = w + (h*640);        //We see which pixel we are working on
          if (userMap[clickPosition] != 0) {
+           cam.pixels[ clickPosition] = color(0, 200, 0);
 
              if(w < min[z][0]){
                min[z][0] = int(w*reScale);
@@ -78,7 +79,11 @@ void draw(){
            }
          }
       }
-      
+      println("Xmin: " + min[z][0]);
+      println("Xmax: " + max[z][0]);
+      println("Ymin: " + min[z][1]);
+      println("Ymax: " + max[z][1]);
+      println(reScale);
       for( int u=0; u<14; u++){
         int minS = int( u * width/14);
         int maxS =int( (u+1) * width/14);
@@ -107,6 +112,12 @@ void draw(){
       
     }
   }
+   cam.updatePixels();
+   pushMatrix();
+  translate(0, (height-kinectHeight*reScale)/2);
+  scale(reScale);
+  image(cam,0,0);
+  popMatrix();
   
   for( int u=0; u<14; u++){
     image(square,pos[u][0],pos[u][1]);

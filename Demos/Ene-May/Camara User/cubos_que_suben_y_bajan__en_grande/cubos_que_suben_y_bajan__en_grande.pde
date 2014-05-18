@@ -17,7 +17,7 @@ int kinectHeight = 480;
 float reScale;
 
 void setup(){
-  size(1366,763,OPENGL);
+  size(800,600,OPENGL);
   background(0);
   int lado = width/14;
   square = createImage(lado,lado,ARGB);
@@ -65,25 +65,26 @@ void draw(){
            cam.pixels[ clickPosition] = color(0, 200, 0);
 
              if(w < min[z][0]){
-               min[z][0] = int(w*reScale);
+               min[z][0] = w;
              }
              if(w > max[z][0]){
-               max[z][0] = int(w*reScale);
+               max[z][0] = w;
              }
              if(h < min[z][1]){
-               min[z][1] = int(h*reScale);
+               min[z][1] = h;
              }
              if(h > max[z][1]+5){
-               max[z][1] = int(h*reScale);
+               max[z][1] = h;
              } 
-           }
+           }             
          }
       }
-      println("Xmin: " + min[z][0]);
-      println("Xmax: " + max[z][0]);
-      println("Ymin: " + min[z][1]);
-      println("Ymax: " + max[z][1]);
-      println(reScale);
+      
+      min[z][0] = int(min[z][0]*reScale);
+      max[z][0] = int(max[z][0]*reScale);
+      min[z][1] = int(min[z][1]*reScale);
+      max[z][1] = int(max[z][1]*reScale);
+      
       for( int u=0; u<14; u++){
         int minS = int( u * width/14);
         int maxS =int( (u+1) * width/14);
@@ -122,5 +123,6 @@ void draw(){
   for( int u=0; u<14; u++){
     image(square,pos[u][0],pos[u][1]);
   }
+  
 }
 

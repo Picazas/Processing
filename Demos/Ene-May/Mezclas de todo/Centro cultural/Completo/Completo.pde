@@ -15,7 +15,7 @@ import processing.opengl.*;
 //Program
 int control = 0;
 int time = 12000;
-int scene = 1;
+int scene = 0;
 int people = 0;
 int peopleBefore = 0;
 int futureScene = 0;
@@ -119,7 +119,7 @@ int nowSQ;
 //////////////////////////////////////  SETUP  ////////////////////////////////////////////
 
 void setup(){
-  size(1366,768,OPENGL);
+  size(1000,600,OPENGL);
   background(0);
   reScale = (float) width / kinectWidth;
   cam = createImage(640,480,RGB);

@@ -901,21 +901,26 @@ void squares (int[] userList,int[] userMap){
            clickPosition = w + (h*640);        //We see which pixel we are working on
            if (userMap[clickPosition] != 0) {
   
-               if(w < minSQ[z][0]){
-                 minSQ[z][0] = int(w * reScale);
-               }
-               if(w > maxSQ[z][0]){
-                 maxSQ[z][0] = int(w * reScale);
-               }
-               if(h < minSQ[z][1]){
-                 minSQ[z][1] = int(h * reScale);
-               }
-               if(h > maxSQ[z][1]+5){
-                 maxSQ[z][1] = int(h * reScale);
-               } 
+                if(w < minSQ[z][0]){
+               minSQ[z][0] = w;
              }
-           }
-        }
+             if(w > maxSQ[z][0]){
+               maxSQ[z][0] = w;
+             }
+             if(h < minSQ[z][1]){
+               minSQ[z][1] = h;
+             }
+             if(h > maxSQ[z][1]+5){
+               maxSQ[z][1] = h;
+             } 
+           }             
+         }
+      }
+      
+      minSQ[z][0] = int(minSQ[z][0]*reScale);
+      maxSQ[z][0] = int(maxSQ[z][0]*reScale);
+      minSQ[z][1] = int(minSQ[z][1]*reScale);
+      maxSQ[z][1] = int(maxSQ[z][1]*reScale);
         
         for( int u=0; u<14; u++){
           int minS = int( u * width/14);
@@ -951,6 +956,4 @@ void squares (int[] userList,int[] userMap){
     }
   }
 }
-
-
 

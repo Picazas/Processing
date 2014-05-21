@@ -605,7 +605,7 @@ void threads(int[] userList){
   }
   else{  
     fill(0,0,0,35);
-    rect(0,0,width,height);
+    rect(0,0,2*width,2*height);
        
     for (int i=0; i<userList.length; i++){
       int userId = userList[i]; //getting user data
@@ -630,9 +630,9 @@ void threads(int[] userList){
   }
 }
 
-//////////////////////////////////////  ESTELA  ////////////////////////////////////////////
+//////////////////////////////////////  LINES V&H  ////////////////////////////////////////////
 
-void estela(int[] depthValues){
+void LinesVH(int[] depthValues){
   
   if( countScene > time){
     ending();    
@@ -641,94 +641,66 @@ void estela(int[] depthValues){
     ending();
   }
   else{  
-    println(a);
-    fill(0,0,0,35);
-    rect(0,0,width,height);
-    
-    
-    cam.loadPixels();
-    for(int x = 0; x < kinectWidth; x++){           //See all the pixels
-      for(int y = 0; y < kinectHeight; y++){
-        clickPosition = x + (y*640);        //We see which pixel we are working on
-        clickedDepth = depthValues2[clickPosition];    //See the pixel's value 
-        if (clickedDepth > 455){
-        if (maxValue > clickedDepth){
-          switch (a){
-            
-            case 0:          
-              cam.pixels[ clickPosition] = color(255, 0, 0);
-              break;
-            
-            case 1:           
-              cam.pixels[ clickPosition] = color(255, 125, 0);
-              break;
-              
-            case 2:           
-              cam.pixels[ clickPosition] = color(255, 255, 0);
-              break;
-              
-            case 3:           
-              cam.pixels[ clickPosition] = color(125, 255, 0);
-              break;
-              
-            case 4: 
-              cam.pixels[ clickPosition] = color(0, 255, 0);
-              break;
-            
-            case 5:           
-              cam.pixels[ clickPosition] = color(0, 255, 125);
-              break;
-                       
-            case 6:           
-              cam.pixels[ clickPosition] = color(0, 255, 255);
-              break;
-                       
-            case 7:          
-              cam.pixels[ clickPosition] = color(0, 125, 255);
-              break;
-            
-            case 8:           
-              cam.pixels[ clickPosition] = color(0, 0, 255);
-              break;
-                       
-            case 9:           
-              cam.pixels[ clickPosition] = color(125, 0, 255);
-              break;
-                        
-            case 10:           
-              cam.pixels[ clickPosition] = color(255, 0, 255);
-              a=0;
-              break;
-            case 11:           
-              cam.pixels[ clickPosition] = color(255, 0, 125);
-              a=0;
-              break;
-              
-        }
-       }  
+
+    PImage camLVH = createImage(640,480,RGB);
+    camLVH.loadPixels();
+    for(int y = 0; y < 480; y++){
+      
+      if(c2<lineW){
+        actLVH=1;
+        c2++;
       }
-     }
-    }
-    
-    if (a==11){ a=0; }
-    else  a++;
-    
-    for(int x = 0; x < kinectWidth; x++){           //See all the pixels
-      for(int y = 0; y < kinectHeight; y++){
+      else if(c2<(lineW*2)){
+        actLVH=2;
+        c2++;
+      }
+      if(c2==(2*lineW-1)) {c2=0;}
+      
+      for(int x = 0; x < 640; x++){         //See all the pixels    
         clickPosition = x + (y*640);        //We see which pixel we are working on
         clickedDepth = depthValues[clickPosition];    //See the pixel's value 
         if (clickedDepth > 455){
-        if (maxValue > clickedDepth){
-          cam.pixels[ clickPosition] = color(0);}
+          if (maxValue > clickedDepth){
+            if(actLVH==1){
+                camLVH.pixels[clickPosition] = color(255);
+              }
+              else if(actLVH==2){
+                camLVH.pixels[clickPosition] = color(0);
+              }
+          }
+          else {
+            camLVH.pixels[clickPosition] = color(0);
+            for(int h=0; h<totalLVH; h+=2){
+              if(x > h*lineW && x < h*lineW+lineW){
+                camLVH.pixels[clickPosition] = color(255);
+              }
+            }
+          }
         }
       }
     }
+    camLVH.updatePixels();    
+  
+    fill(255);
+    rect(0,0,width,height);
     
-    depthValues2 = depthValues;
-    cam.updatePixels();
+    pushMatrix();
     translate(0, (height-kinectHeight*reScale)/2);
     scale(reScale);
-    image(cam,0,0);
+    image(camLVH,0,0);
+    popMatrix();
+    
+    /*for(int r=0; r<(totalLVH+1); r++){
+      if(c==1){
+        c=0;
+        fill(0);
+        noStroke();
+        rect((lineW*r),-20,lineW,(height+40));
+      }
+     else if(c==0){c=1;}
+    }*/
+    c=0; 
+    c2=0;
   }
 }
 

@@ -14,10 +14,10 @@ import processing.opengl.*;
 
 //Program
 int control = 0;
-int time = 12000;
-int scene = 0;
-int people = 0;
-int peopleBefore = 0;
+int time = 8000;
+int scene = 7;
+int people = 5;
+int peopleBefore = 5 ;
 int futureScene = 0;
 int countEnding = 0;
 int countScene = 0;
@@ -94,9 +94,12 @@ int[] actL;
 float[][] snowflakes;
 float[][] lights;
 
-//Estela
-int a=0;
-int[] depthValues2;
+//LinesV&H
+int totalLVH =90;
+int lineW;
+int c=0;
+int c2=0;
+int actLVH=0;
 
 //Threads
 PVector position = new PVector(0,0,0);
@@ -238,9 +241,8 @@ void setup(){
       actL[x] = 0;
   }
   
-  //Estela
-  depthValues2 = kinect.depthMap();  
-  depthValues = kinect.depthMap();
+  //LinesV&H
+  lineW = width/totalLVH;
   
   //WoolenBalls
   countWB = 0;
@@ -267,7 +269,8 @@ void setup(){
 
 void draw(){
   println(countScene);
-  println("Scene: "+scene);
+  println("Scene: "+ scene);
+  println("People: "+ people);
   
   box2d.step();
   kinect.update();
@@ -275,8 +278,11 @@ void draw(){
   userList = kinect.getUsers();
   depthValues = kinect.depthMap();
   
-  people = userList.length;
+  if(userList.length>0){
+    people = userList.length; 
+  }
   controlP();
+  //peopleBefore = people;   
   countScene ++;
   
   switch(scene){
@@ -305,7 +311,7 @@ void draw(){
       threads(userList);
       break;
     case 8:
-      estela(depthValues);
+      LinesVH(depthValues);
       break;
     case 9:
       woollenBalls();

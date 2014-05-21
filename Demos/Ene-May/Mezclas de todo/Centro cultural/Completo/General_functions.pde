@@ -18,7 +18,7 @@ void controlP(){
         futureScene = 4;
         break;
       case 4:
-        futureScene = 0;
+        futureScene = 5;
         break;
       case 5:
         futureScene = 6;
@@ -36,13 +36,13 @@ void controlP(){
         futureScene = 10;
         break;
       case 10:
-        futureScene = 5;
+        futureScene = 0;
         break;
     }
   }
   
   
-  if(people > 1 && peopleBefore < 1){
+  /*if(people > 1 && peopleBefore < 1){
     control = 1;
     switch(scene){
       case 0:
@@ -95,9 +95,7 @@ void controlP(){
         futureScene = 0;
         break;
     }
-  }
-  
-  peopleBefore = people;
+  }*/
 }
   
   
@@ -271,9 +269,6 @@ void reset(){
       act[x] = 1;
       actL[x] = 0;
   }
-  
-  //Estela
-  depthValues2 = kinect.depthMap();
   
   //WoolenBalls
   countWB = 0;

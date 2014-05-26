@@ -28,7 +28,7 @@ Mov mov;
 
 void setup() {
  
-  size(700,400, P2D);
+  size(600,400, P2D);
   //frameRate(150);
   kinect= new SimpleOpenNI(this);
   reScale = (float) width / kinectWidth;
@@ -80,58 +80,85 @@ void draw() {
  {
    int userId = userList [i];
    
-   if(count == 20){
-     count = 0;
-   
-    /*kinect.getJointPositionSkeleton(userId,SimpleOpenNI.SKEL_NECK,jointPos);
-    println("Neck:"+jointPos);
+    kinect.getJointPositionSkeleton(userId,SimpleOpenNI.SKEL_NECK,jointPos);
     jointPos.x = jointPos.x * reScale;
     jointPos.y = jointPos.y * reScale;
+    if(jointPos.x != 0 && jointPos.y != 0){
+      jointPos.x = (width/2) + (jointPos.x/2);
+      jointPos.y = height-((height/2) + (jointPos.y/2));
+    }
+    if(jointPos.x >= width){jointPos.x = width-1;}
+    else if(jointPos.x <= 0){jointPos.x = 1;}
+    else if(jointPos.y >= height){jointPos.y = height-1;}
+    else if(jointPos.y <= 0){jointPos.y = 1;}
     body[0][0] = jointPos.x;
     body[0][1] = jointPos.y;
-    handleMouseMotion(jointPos,0); */
+    handleMouseMotion(jointPos,0); 
      
     kinect.getJointPositionSkeleton(userId,SimpleOpenNI.SKEL_RIGHT_HAND,jointPos);
-    println("RH:"+jointPos);
+    println("RH1:"+jointPos);
     jointPos.x = jointPos.x * reScale;
     jointPos.y = jointPos.y * reScale;
+    println("RH2:"+jointPos);
+    if(jointPos.x != 0 && jointPos.y != 0){
+      jointPos.x = (width/2) + (jointPos.x/2);
+      jointPos.y = height-((height/2) + (jointPos.y/2));
+    }
+    println("RH3:"+jointPos);
+    if(jointPos.x >= width){jointPos.x = width-1;}
+    else if(jointPos.x <= 0){jointPos.x = 1;}
+    else if(jointPos.y >= height){jointPos.y = height-1;}
+    else if(jointPos.y <= 0){jointPos.y = 1;}
     body[1][0] = jointPos.x;
     body[1][1] = jointPos.y;
     handleMouseMotion(jointPos,1);
    
-   /* kinect.getJointPositionSkeleton(userId,SimpleOpenNI.SKEL_LEFT_HAND,jointPos);
-    //println("LH:"+jointPos);
+    kinect.getJointPositionSkeleton(userId,SimpleOpenNI.SKEL_LEFT_HAND,jointPos);
     jointPos.x = jointPos.x * reScale;
     jointPos.y = jointPos.y * reScale;
+    if(jointPos.x != 0 && jointPos.y != 0){
+      jointPos.x = (width/2) + (jointPos.x/2);
+      jointPos.y = height-((height/2) + (jointPos.y/2));
+    }
+    if(jointPos.x >= width){jointPos.x = width-1;}
+    else if(jointPos.x <= 0){jointPos.x = 1;}
+    else if(jointPos.y >= height){jointPos.y = height-1;}
+    else if(jointPos.y <= 0){jointPos.y = 1;}
     body[2][0] = jointPos.x;
     body[2][1] = jointPos.y;
     handleMouseMotion(jointPos,2);
    
     kinect.getJointPositionSkeleton(userId,SimpleOpenNI.SKEL_RIGHT_FOOT,jointPos);
-    //println("RF:"+jointPos);
     jointPos.x = jointPos.x * reScale;
     jointPos.y = jointPos.y * reScale;
+    if(jointPos.x != 0 && jointPos.y != 0){
+      jointPos.x = (width/2) + (jointPos.x/2);
+      jointPos.y = height-((height/2) + (jointPos.y/2));
+    }
+    if(jointPos.x >= width){jointPos.x = width-1;}
+    else if(jointPos.x <= 0){jointPos.x = 1;}
+    else if(jointPos.y >= height){jointPos.y = height-1;}
+    else if(jointPos.y <= 0){jointPos.y = 1;}
     body[3][0] = jointPos.x;
     body[3][1] = jointPos.y;
     handleMouseMotion(jointPos,3);
    
     kinect.getJointPositionSkeleton(userId,SimpleOpenNI.SKEL_LEFT_FOOT,jointPos);
-    //println("LF:"+jointPos);
     jointPos.x = jointPos.x * reScale;
     jointPos.y = jointPos.y * reScale;
+    if(jointPos.x != 0 && jointPos.y != 0){
+      jointPos.x = (width/2) + (jointPos.x/2);
+      jointPos.y = height-((height/2) + (jointPos.y/2));
+    }
+    if(jointPos.x >= width){jointPos.x = width-1;}
+    else if(jointPos.x <= 0){jointPos.x = 1;}
+    else if(jointPos.y >= height){jointPos.y = height-1;}
+    else if(jointPos.y <= 0){jointPos.y = 1;}
     body[4][0] = jointPos.x;
     body[4][1] = jointPos.y; 
-    handleMouseMotion(jointPos,4); */
-    
-    jointPos.x = mouseX;
-    jointPos.y = mouseY; 
-    //println("mouse:"+jointPos);
-    handleMouseMotion(jointPos,5); 
-   }
-   else count++;
+    handleMouseMotion(jointPos,4); 
     
 }
-
    
   background(0); 
   double dt = 1 / frameRate;

@@ -107,8 +107,6 @@ void ending(){
   println(countEnding);
   
   translate(0,0,ZNumbers);
-  /*fill(0,0,0,35);
-  rect(0,0,width,height);*/
   background(0);
   
   String s = "cambiando de escenario";

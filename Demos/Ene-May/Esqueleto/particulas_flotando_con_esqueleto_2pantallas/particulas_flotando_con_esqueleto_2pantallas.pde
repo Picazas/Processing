@@ -28,7 +28,7 @@ Mov mov;
 
 void setup() {
  
-  size(700,400, P2D);
+  size(600,400, P2D);
   //frameRate(150);
   kinect= new SimpleOpenNI(this);
   reScale = (float) width / kinectWidth;
@@ -80,10 +80,10 @@ void draw() {
  {
    int userId = userList [i];
    
-   if(count == 20){
+   /*if(count == 20){
      count = 0;
    
-    /*kinect.getJointPositionSkeleton(userId,SimpleOpenNI.SKEL_NECK,jointPos);
+    kinect.getJointPositionSkeleton(userId,SimpleOpenNI.SKEL_NECK,jointPos);
     println("Neck:"+jointPos);
     jointPos.x = jointPos.x * reScale;
     jointPos.y = jointPos.y * reScale;
@@ -92,9 +92,17 @@ void draw() {
     handleMouseMotion(jointPos,0); */
      
     kinect.getJointPositionSkeleton(userId,SimpleOpenNI.SKEL_RIGHT_HAND,jointPos);
-    println("RH:"+jointPos);
+    println("RH1:"+jointPos);
     jointPos.x = jointPos.x * reScale;
     jointPos.y = jointPos.y * reScale;
+    println("RH2:"+jointPos);
+    jointPos.x = (width/2) + (jointPos.x/2);
+    jointPos.y = height-((height/2) + (jointPos.y/2));
+    println("RH3:"+jointPos);
+    if(jointPos.x > width){jointPos.x = width;}
+    else if(jointPos.x < 0){jointPos.x = 0;}
+    else if(jointPos.y > height){jointPos.y = height;}
+    else if(jointPos.y < 0){jointPos.y = 0;}
     body[1][0] = jointPos.x;
     body[1][1] = jointPos.y;
     handleMouseMotion(jointPos,1);
@@ -127,11 +135,25 @@ void draw() {
     jointPos.y = mouseY; 
     //println("mouse:"+jointPos);
     handleMouseMotion(jointPos,5); 
-   }
-   else count++;
+  /* }
+   else count++;*/
     
 }
 
+  cam.loadPixels();
+  for(int x = 0; x < 640; x++){           //See all the pixels
+    for(int y = 0; y < 480; y++){
+      clickPosition = x + (y*640);        //We see which pixel we are working on
+      clickedDepth = depthValues[clickPosition];    //See the pixel's value 
+      if (clickedDepth > 455){
+      if (maxValue > clickedDepth){
+        cam.pixels[ clickPosition] = color(0, 200, 0);}}
+    }
+  }
+  cam.updatePixels();
+  translate(0, (height-kinectHeight*reScale)/2);
+  scale(reScale);
+  image(cam,width/2,0);
    
   background(0); 
   double dt = 1 / frameRate;

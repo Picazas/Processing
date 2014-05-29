@@ -21,6 +21,8 @@ int kinectWidth = 640;
 int kinectHeight = 480;
 float reScale;
 float movUp = 0;
+float gravity = 0.00005;
+float[] speed = new float[14];
 
 void setup(){
   size(700,500,OPENGL);
@@ -42,6 +44,7 @@ void setup(){
   for( int u=0; u<14; u++){
     pos[u][0] = int(u*width/14.2);
     pos[u][1] = 0;
+    speed[u] = 0;
   }
   
   kinect = new SimpleOpenNI(this);
@@ -106,7 +109,7 @@ void draw(){
       for( int u=0; u<14; u++){
         int minS = int( u * width/14);
         int maxS =int( (u+1) * width/14);
-        
+        if(gravity<1){gravity=1;}
            if(min[z][0]<maxS && min[z][0]>minS && max[z][0]>maxS){
              if(pos[u][1]>-1){
                pos[u][1]-= movUp;
@@ -124,7 +127,9 @@ void draw(){
            }
            else{
              if(pos[u][1] < height-width/14){
-             pos[u][1] ++;
+             pos[u][1] += speed[u]/10;
+             speed[u] += gravity;      
+             println("Speed:"+speed[u]);
              }
            }
       }
@@ -146,10 +151,12 @@ void draw(){
 void filtro(){
   for( int u=0; u<14; u++){
     if(pos[u][1] < 0){
-      pos[u][1] = 0;      
+      pos[u][1] = 0;  
+      speed[u] = 1;      
     }    
     else if(pos[u][1] > height-lado){
-      pos[u][1] = height-lado;      
+      pos[u][1] = height-lado; 
+      speed[u] = 1;     
     }
   }
 }

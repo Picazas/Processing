@@ -68,7 +68,7 @@ void draw(){
     line(min[z][0],min[z][1],max[z][0],min[z][1]);
     line(max[z][0],min[z][1],max[z][0],max[z][1]);
     
-    for(int s=0; s<6; s++){
+  for(int s=0; s<6; s++){
      min[s][0] = width;
      min[s][1] = height;
      max[s][0] = 0;

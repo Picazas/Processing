@@ -9,16 +9,16 @@ class Star{
    void makeBody(Vec2 center) {
 
     Vec2[] vertices = new Vec2[10];
-    vertices[0] = box2d.vectorPixelsToWorld(new Vec2(0, 23.66));
-    vertices[1] = box2d.vectorPixelsToWorld(new Vec2(5, 8.66));
-    vertices[2] = box2d.vectorPixelsToWorld(new Vec2(20.81, 8.66));
-    vertices[3] = box2d.vectorPixelsToWorld(new Vec2(8, -0.5));
-    vertices[4] = box2d.vectorPixelsToWorld(new Vec2(8, -15));
-    vertices[5] = box2d.vectorPixelsToWorld(new Vec2(0, -10));
-    vertices[6] = box2d.vectorPixelsToWorld(new Vec2(-8, -15));
-    vertices[7] = box2d.vectorPixelsToWorld(new Vec2(-8, -0.5));
-    vertices[8] = box2d.vectorPixelsToWorld(new Vec2(-20.81, 8.66));
-    vertices[9] = box2d.vectorPixelsToWorld(new Vec2(-5, 8.66));
+    vertices[0] = box2d.vectorPixelsToWorld(new Vec2(0, -25));
+    vertices[1] = box2d.vectorPixelsToWorld(new Vec2(7, -10));
+    vertices[2] = box2d.vectorPixelsToWorld(new Vec2(22.5, -7.5));
+    vertices[3] = box2d.vectorPixelsToWorld(new Vec2(11.5, 3.5));
+    vertices[4] = box2d.vectorPixelsToWorld(new Vec2(15.5, 20));
+    vertices[5] = box2d.vectorPixelsToWorld(new Vec2(0, 12.5));
+    vertices[6] = box2d.vectorPixelsToWorld(new Vec2(-15.5, 20));
+    vertices[7] = box2d.vectorPixelsToWorld(new Vec2(-11.5, 3.5));
+    vertices[8] = box2d.vectorPixelsToWorld(new Vec2(-23.5, -7.5));
+    vertices[9] = box2d.vectorPixelsToWorld(new Vec2(-7, -10));
 
     // Define a polygon (this is what we use for a rectangle)
     PolygonShape ps = new PolygonShape();

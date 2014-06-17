@@ -23,11 +23,13 @@ int outCircle = 1;
 int moment = 0;  //0: select the shape and the size of this; 1: move the shape;
 int kinectWidth = 640;
 int kinectHeight = 480;
+int LH = 0;
+int RH = 0;
 float reScale;
 float scale = 1;
 float squareX = 25;
 PVector posLH = new PVector(0,0,0);
-PVector posRH = new PVector(0,0,0);
+PVector posRH = new PVector(350,250,0);
 PVector jointPos = new PVector(0,0,0);
 PVector posShape;
 
@@ -76,10 +78,6 @@ void draw(){
   background(0);
   kinect.update();
   box2d.step();
-  pos.x = mouseX;
-  pos.y = mouseY;
-  println("X:"+pos.x);
-  println("Y:"+pos.y);
   println("Moment:"+moment);
   println("redCircle:"+redCircleNum);
   println("outCircle:"+outCircle);
@@ -108,10 +106,10 @@ void draw(){
     posShape.y = height/2;
     scaleSquare();
     scale = 1 + squareX/300;
-    botones(pos);
+    botones(posLH,posRH);
   }
   else if(moment ==1){
-    MovShape(pos);
+    MovShape(posLH, posRH);
   }
   
   staticSquares();
@@ -135,6 +133,10 @@ void draw(){
   fill(255);
   rectMode(CENTER);
   rect(squareX,width/6,20,40);
+    
+  fill(255,0,0);
+  ellipse(posLH.x,posLH.y,15,15);
+  ellipse(posRH.x,posRH.y,15,15);
   
 }
 
@@ -152,15 +154,30 @@ void reset(){
   squareX = 25;
   posShape.x = width/2;
   posShape.y = height/2;
+  LH = 0;
+  RH = 0;
 }
 
-void MovShape(PVector p){
-  if(p.x < (width/2)+20 && p.x > (width/2)-20 && p.y < (height/2)+20 && p.y > (height/2)-20){
+void MovShape(PVector pLH, PVector pRH){
+  if(pLH.x < (width/2)+20 && pLH.x > (width/2)-20 && pLH.y < (height/2)+20 && pLH.y > (height/2)-20){
     actMovShape = 1;
+    LH = 1;
+    RH = 0;
+  }
+  else if(pRH.x < (width/2)+20 && pRH.x > (width/2)-20 && pRH.y < (height/2)+20 && pRH.y > (height/2)-20){
+    actMovShape = 1;
+    LH = 0;
+    RH = 1;
   }
   if(actMovShape == 1){
-    posShape.x = pos.x;
-    posShape.y = pos.y;
+    if(LH == 1){
+      posShape.x = posLH.x;
+      posShape.y = posLH.y;
+    }
+    else if( RH == 1){
+      posShape.x = posRH.x;
+      posShape.y = posRH.y;
+    }     
   }
 }
 
@@ -198,27 +215,34 @@ void moment(){
 }
 
 void redCircle(){
-  if(pos.x > 400 && pos.x < 500){
-    if(pos.y > 50 && pos.y < 155 && redCircleNum == 0 && outCircle == 1){
+  if(posLH.x > 400 && posLH.x < 500){
+    if(posLH.y > 50 && posLH.y < 155 && redCircleNum == 0 && outCircle == 1){
       outCircle = 0;
       redCircleNum = 1;
     }
   }
-  else if(pos.x < 400 || pos.x > 500){
-    if(pos.y < 50 || pos.y > 155 ){
-      if(redCircleNum == 1 && outCircle == 0){
+  else if(posRH.x > 400 && posRH.x < 500){
+    if(posRH.y > 50 && posRH.y < 155 && redCircleNum == 0 && outCircle == 1){
+      outCircle = 0;
+      redCircleNum = 1;
+    }
+  }
+  else if(redCircleNum == 1 && outCircle == 0){
         outCircle = 1;
         redCircleNum = 0;
         actShape = 1;
-      }
-    }
   }
 }
 
 void scaleSquare(){
-  if(pos.x > 15 && pos.x < 375){
-    if(pos.y > 95 && pos.y < 135){
-      squareX = pos.x;
+  if(posLH.x > 15 && posLH.x < 375){
+    if(posLH.y > 95 && posLH.y < 135){
+      squareX = posLH.x;
+    }
+  }
+  else if(posRH.x > 15 && posRH.x < 375){
+    if(posRH.y > 95 && posRH.y < 135){
+      squareX = posRH.x;
     }
   }
   if( squareX < 25) squareX = 25;
@@ -288,6 +312,24 @@ void star(float x, float y, float scaleStar){
   vertex(-7, -10);
   endShape(CLOSE);
   popMatrix();
+}
+
+void onNewUser(SimpleOpenNI curContext, int userId)
+{
+  println("onNewUser - userId: " + userId);
+  println("\tstart tracking skeleton");
+  
+  curContext.startTrackingSkeleton(userId);
+}
+
+void onLostUser(SimpleOpenNI curContext, int userId)
+{
+  println("onLostUser - userId: " + userId);
+}
+
+void onVisibleUser(SimpleOpenNI curContext, int userId)
+{
+  //println("onVisibleUser - userId: " + userId);
 }
 
 

@@ -28,7 +28,7 @@ Mov mov;
 
 void setup() {
  
-  size(600,400, P2D);
+  size(1000,600, P2D);
   //frameRate(150);
   kinect= new SimpleOpenNI(this);
   reScale = (float) width / kinectWidth;

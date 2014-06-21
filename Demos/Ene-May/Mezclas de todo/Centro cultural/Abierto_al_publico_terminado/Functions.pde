@@ -364,13 +364,15 @@ void closingCircle(int[] depthValues){
     ending();
   }
   else{    
-    background(0);
-    cuentaPixelsCC = 0;
+    fill(0);
+    rect(0,0,width,height);  
+    IntVector userList = new IntVector();
+    kinect.getUsers(userList);
     
-   cam.loadPixels();
-   for(int x = 0; x < kinectWidth; x++){           //See all the pixels
-      for(int y = 0; y < kinectHeight; y++){
-        clickPosition = x + (y*kinectWidth);        //We see which pixel we are working on
+    cam.loadPixels();
+    for(int x = 0; x < 640; x++){           //See all the pixels
+      for(int y = 0; y < 480; y++){
+        clickPosition = x + (y*640);        //We see which pixel we are working on
         clickedDepth = depthValues[clickPosition];    //See the pixel's value 
         if (clickedDepth > 455){
           if (maxValue > clickedDepth){
@@ -382,22 +384,40 @@ void closingCircle(int[] depthValues){
     }
     cam.updatePixels();
     
+    for (int z=0; z<userList.size(); z++){
+      
+      int userId = userList.get(z);           //getting user data    
+      kinect.getCoM(userId, position);
+      kinect.convertRealWorldToProjective(position, position);
+        
+      jointPos.x = position.x*reScale;
+      jointPos.y = position.y*reScale;    
+  
+    }  
+    
     if (cuentaPixelsCC < 35000)  {
       comienzoCC = 1;
     }
     if (comienzoCC == 1){
-      radioCC-=5;
+      radioCC-=15;
       if(radioCC < 30){
         comienzoCC = 0;
-        radioCC = int(width*2);
+        radioCC = int(width*1.6);
       }
+      fill(255);
+      ellipse(jointPos.x,jointPos.y,radioCC,radioCC);
+    }
+    else{  
+      fill(255);
+      ellipse(width/2,height-height/20,radioCC,radioCC); 
     }
     
     println("Comienzo: " + comienzoCC);
-    println("Pixels: " + cuentaPixelsCC);
-    fill(255);
-    ellipse(width/2,height-height/20,radioCC,radioCC);  
-  }
+    println("Pixels: " + cuentaPixelsCC); 
+    translate(0, (height-kinectHeight*reScale)/2);
+    scale(reScale);
+    image(cam,0,0);  
+    }
 }
 
 //////////////////////////////////////  AVOIDTHREADS  ////////////////////////////////////////////
@@ -855,10 +875,10 @@ void squares (int[] userList,int[] userMap){
   else if(end[scene]==1 || control == 1){
     ending();
   }
-  else{  
-  
+  else{    
    
-    background(0);
+    fill(0);
+    rect(0,0,width,height);
     for(int s=0; s<6; s++){
        minSQ[s][0] = width;
        minSQ[s][1] = height;
@@ -867,64 +887,93 @@ void squares (int[] userList,int[] userMap){
     }
     
     if (kinect.getNumberOfUsers() > 0) {   
-      for (int z=0; z<userList.length; z++){  
+       for (int z=0; z<userList.length; z++){ 
         for(int h = 0; h < 480; h++){           //See all the pixels
          for(int w = 0; w < 640; w++){
            clickPosition = w + (h*640);        //We see which pixel we are working on
            if (userMap[clickPosition] != 0) {
-  
-                if(w < minSQ[z][0]){
-               minSQ[z][0] = w;
+             
+               array2SQ [clickPosition] = 1;
+               
+               if(w < minSQ[z][0]){
+                 minSQ[z][0] = int(w*reScale);
+               }
+               if(w > maxSQ[z][0]){
+                 maxSQ[z][0] = int(w*reScale);
+               }
+               if(h < minSQ[z][1]){
+                 minSQ[z][1] = int(h*reScale);
+               }
+               if(h > maxSQ[z][1]+5){
+                 maxSQ[z][1] = int(h*reScale);
+               } 
              }
-             if(w > maxSQ[z][0]){
-               maxSQ[z][0] = w;
-             }
-             if(h < minSQ[z][1]){
-               minSQ[z][1] = h;
-             }
-             if(h > maxSQ[z][1]+5){
-               maxSQ[z][1] = h;
-             } 
-           }             
-         }
-      }
-      
-      minSQ[z][0] = int(minSQ[z][0]*reScale);
-      maxSQ[z][0] = int(maxSQ[z][0]*reScale);
-      minSQ[z][1] = int(minSQ[z][1]*reScale);
-      maxSQ[z][1] = int(maxSQ[z][1]*reScale);
+             else array2SQ [clickPosition] = 0;
+           }
+        }
         
+       for(int r=0; r<307200; r++){
+          if(array1SQ[r] != array2SQ[r]){
+            numSQ++;
+          }
+       }   
+        
+      movUpSQ = numSQ/4000;  
+      if(movUpSQ < 1) movUpSQ = 1;
+      println("MovUp:"+movUpSQ);      
+      println("num:"+numSQ);
         for( int u=0; u<14; u++){
           int minS = int( u * width/14);
           int maxS =int( (u+1) * width/14);
-          
+          if(gravitySQ<1){gravitySQ=1;}
              if(minSQ[z][0]<maxS && minSQ[z][0]>minS && maxSQ[z][0]>maxS){
                if(posSQ[u][1]>-1){
-                 posSQ[u][1]--;
+                 posSQ[u][1]-= movUpSQ;
                }
              }
              else if(minSQ[z][0]<minS && maxSQ[z][0]>maxS){
                if(posSQ[u][1]>-1){
-                 posSQ[u][1]--;
+                 posSQ[u][1]-= movUpSQ;
                }
              }
              else if(minSQ[z][0]<minS && maxSQ[z][0]>minS && maxSQ[z][0]<maxS){
                if(posSQ[u][1]>-1){
-                 posSQ[u][1]--;
+                 posSQ[u][1]-= movUpSQ;
                }
              }
              else{
                if(posSQ[u][1] < height-width/14){
-               posSQ[u][1]++;
+               posSQ[u][1] += speedSQ[u]/10;
+               speedSQ[u] += gravitySQ;      
+               println("Speed:"+speedSQ[u]);
                }
              }
         }
-        
       }
     }
     
+    filtroSQ();
+    
+    for(int r=0; r<307200; r++){
+      array1SQ[r] = array2SQ[r];
+    }
+    numSQ = 0;
+    
     for( int u=0; u<14; u++){
       image(square,posSQ[u][0],posSQ[u][1]);
+    }
+  }
+}
+
+void filtroSQ(){
+  for( int u=0; u<14; u++){
+    if(posSQ[u][1] < 0){
+      posSQ[u][1] = 0;  
+      speedSQ[u] = 1;      
+    }    
+    else if(posSQ[u][1] > height-(width/14)){
+      posSQ[u][1] = height-(width/14); 
+      speedSQ[u] = 1;     
     }
   }
 }

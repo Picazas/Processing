@@ -17,7 +17,7 @@ float reScale;
 
 void setup(){
   
-  size (1000,720);
+  size (1024,768);
   kinect= new SimpleOpenNI(this);
   background(0);
   reScale = (float) width / kinectWidth;
@@ -94,7 +94,7 @@ void draw(){
    translate(0, (height-kinectHeight*reScale)/2);
    scale(reScale);
    image(cam,0,0); 
-  }
+  
 
   for(int s=0; s<6; s++){
      min[s][0] = width;

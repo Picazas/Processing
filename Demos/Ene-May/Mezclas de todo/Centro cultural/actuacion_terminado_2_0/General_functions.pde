@@ -146,61 +146,6 @@ void reset(){
   comienzoCC = 0;
   cuentaPixelsCC = 100000;
   
-  //AvoidThreads
-  cTH = width/nLinesTH;
-  linesTH = new int[nLinesTH][2];
-  actLinesTH =new int [nLinesTH];
-  for(int r=0; r<nLinesTH; r++){
-    linesTH[r][0] = int(random( (cTH*r)-25, (cTH*r)+25 ));
-    linesTH[r][1] = int(random( (cTH*r)-25, (cTH*r)+25 ));
-    actLinesTH[r] = 0;
-  }
-  
-   //Snow
-  num = width/2;
-  snowflakes = new float[num][2];
-  lights = new float[num][2];
-  count = new int[num];
-  act = new int[num];
-  actL = new int[num];
- 
-  for(int x=0; x<num; x++){
-      lights[x][0] = 4;
-      lights[x][1] = 1;
-      snowflakes[x][0] = 2*x;
-      snowflakes[x][1] = random(-height,-5);
-      act[x] = 1;
-      actL[x] = 0;
-  }
-  
-  //WoolenBalls
-  countWB = 0;
-  countWB2 = 0;
-  countLineWB = 0;
-  
-  //Squares
-  beforeSQ = 0;
-  nowSQ = 0;
-  numSQ = 0;
-  countSQ = 0;
-  movUpSQ = 0;
-  gravitySQ = 0.00005;
-  square = createImage(width/14,width/14,ARGB);
-  for(int i = 0; i < square.pixels.length; i++) {
-    float a = map(i, 0, square.pixels.length, 255, 0);
-    square.pixels[i] = color(255, 255, 255, a); 
-  }
-
-  for(int o=0; o<307200; o++){
-    array1SQ[o] = 0;
-    array2SQ[o] = 0;
-  }
-
-  for( int u=0; u<14; u++){
-    posSQ[u][0] = int(u*width/14.2);
-    posSQ[u][1] = 0;
-    speedSQ[u] = 0;
-  }
 }
 
 //////////////////////////////////////  MAXVALUE  ////////////////////////////////////////////
@@ -226,9 +171,11 @@ void keyPressed(){
     reset();
     println(scene);
     break;
-  case 'm':
-    countScene = 17950;
+  case 'l':
+    kinect.setMirror(!kinect.mirror());
     break;
+  case 'm':
+    countScene = time-10;
   
   }  
 }

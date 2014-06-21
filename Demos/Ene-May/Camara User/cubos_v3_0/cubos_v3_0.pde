@@ -25,7 +25,7 @@ float gravity = 0.00005;
 float[] speed = new float[14];
 
 void setup(){
-  size(700,500,OPENGL);
+  size(1024,768,OPENGL);
   background(0);
   lado = width/14;
   square = createImage(lado,lado,ARGB);

@@ -16,7 +16,7 @@ int h = 480;
 float[] depthLookUp = new float[2048];
 
 void setup() {
-  size(800,600,P3D);
+  size(10254,768,P3D);
   kinect = new Kinect(this);
   kinect.start();
   kinect.enableDepth(true);

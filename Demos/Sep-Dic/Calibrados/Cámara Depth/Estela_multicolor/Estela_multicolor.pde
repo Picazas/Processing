@@ -15,7 +15,7 @@ int[] depthValues2;
 int[] depthValues;
 
 void setup(){
-  size (1280, 720);
+  size (1024, 768);
   kinect= new SimpleOpenNI(this);
   background(0);
   frameRate(10);

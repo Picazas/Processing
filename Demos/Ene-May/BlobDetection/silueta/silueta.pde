@@ -13,7 +13,7 @@ PGraphics img;
 PImage cam;
 
 void setup(){
-  size(1000,700,P3D);
+  size(1024,768,P3D);
   background(255);
   reScale = (float) width / kinectWidth;
   cam = createImage(640,480,RGB);
@@ -21,7 +21,6 @@ void setup(){
   kinect = new SimpleOpenNI(this);
   kinect.enableDepth();
   kinect.enableUser();
-  kinect.setMirror(true);
   
   theBlobDetection = new BlobDetection(cam.width, cam.height);
   theBlobDetection.setPosDiscrimination(false);

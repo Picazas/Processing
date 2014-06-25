@@ -18,7 +18,7 @@ PVector position = new PVector(0,0,0);
 PVector jointPos = new PVector(0,0,0);
 
 void setup(){
-  size(1000,650);
+  size(1024,768);
   background(0);
   kinect= new SimpleOpenNI(this);
   reScale = (float) width / kinectWidth;

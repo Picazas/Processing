@@ -22,7 +22,7 @@ class Star{
 
     // Define a polygon (this is what we use for a rectangle)
     PolygonShape ps = new PolygonShape();
-    ps.s et(vertices, vertices.length);
+    ps.set(vertices, vertices.length);
 
     // Define the body and make it from the shape
     BodyDef bd = new BodyDef();

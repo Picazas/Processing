@@ -45,7 +45,7 @@ ArrayList<Star> stars;
 
 void setup(){
   
-  size(700,500);
+  size(1024,768);
   background(0);
   
   posShape.x = width/2;

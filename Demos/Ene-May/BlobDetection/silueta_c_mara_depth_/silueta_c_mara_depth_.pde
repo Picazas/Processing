@@ -9,13 +9,13 @@ BlobDetection theBlobDetection;
 int clickedDepth,clickPosition;
 int kinectWidth = 640;
 int kinectHeight = 480;
-int maxValue = 2500;
+int maxValue = 2600;
 float reScale;
 PGraphics img;
 PImage cam;
 
 void setup(){
-  size(1000,700,P3D);
+  size(1024,768,P3D);
   background(255);
   reScale = (float) width / kinectWidth;
   cam = createImage(640,480,RGB);

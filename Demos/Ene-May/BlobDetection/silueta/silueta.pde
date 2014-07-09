@@ -13,7 +13,7 @@ PGraphics img;
 PImage cam;
 
 void setup(){
-  size(1024,768,P3D);
+  size(800,600,P3D);
   background(255);
   reScale = (float) width / kinectWidth;
   cam = createImage(640,480,RGB);

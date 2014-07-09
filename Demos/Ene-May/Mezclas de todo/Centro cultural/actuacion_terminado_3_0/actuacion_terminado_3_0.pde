@@ -75,8 +75,8 @@ int nLinesTH = 150;
 //////////////////////////////////////  SETUP  ////////////////////////////////////////////
 
 void setup(){
-  size(1024,768,OPENGL);
-  background(0);
+  size(800,600,OPENGL);
+  background(255);
   reScale = (float) width / kinectWidth;
   cam = createImage(640,480,RGB);
   
@@ -191,7 +191,7 @@ void draw(){
       closingCircle(depthValues);
       break;
     default:
-      background(0,255,0);
+      background(0);
       break;
   }
 }

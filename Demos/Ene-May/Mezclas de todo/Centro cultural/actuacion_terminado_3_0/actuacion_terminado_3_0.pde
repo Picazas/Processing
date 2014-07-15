@@ -34,7 +34,7 @@ PVector jointPos = new PVector(0,0,0);
 int clickedDepth,clickPosition;
 int kinectWidth = 640;
 int kinectHeight = 480;
-int maxValue = 2650;
+int maxValue = 2800;
 float reScale;
 PImage cam;
 

@@ -300,6 +300,17 @@ void closingCircle(int[] depthValues){
     }
     cam.updatePixels();
     
+    if(userList.size()==0){
+      radioCC = int(width*2);
+      fill(255);
+      ellipse(jointPos.x,jointPos.y,radioCC,radioCC);
+  }
+  if(cuentaPixelsCC == 0){
+      radioCC = int(width*2);
+      fill(255);
+      ellipse(jointPos.x,jointPos.y,radioCC,radioCC);
+  }
+    
     for (int z=0; z<userList.size(); z++){
      
       int userId = userList.get(z);           //getting user data    
